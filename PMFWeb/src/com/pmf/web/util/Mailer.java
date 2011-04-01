@@ -91,7 +91,6 @@ public class Mailer {
 				simpleMessage.setRecipient(RecipientType.CC, ccAddress);
 			simpleMessage.setSubject(subject);
 			simpleMessage.setContent(text, contentType);
-			//simpleMessage.setText(text);
 			Transport.send(simpleMessage);			
 		} catch (MessagingException e) {
 			throw e;
