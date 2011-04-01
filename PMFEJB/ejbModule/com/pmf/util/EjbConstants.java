@@ -1,5 +1,7 @@
 package com.pmf.util;
 
+import com.pmf.commons.Constants;
+
 public interface EjbConstants {
 
 	// tables
@@ -17,7 +19,7 @@ public interface EjbConstants {
 	public final String MESSAGE_NO_DATA_FOUND = "No se encontraron datos";
 	public final String MESSAGE_NO_USER_EXISTS = "Usuario inexistente";
 	public final String MESSAGE_NOT_EXISTS = " inexistente";
-	public final String MESSAGE_NOT_VALID_USER_AND_PASSWORD = "Usuario o contraseña inválida";
+	public final String MESSAGE_NOT_VALID_USER_AND_PASSWORD = "Usuario o contraseña inv"+Constants.CHAR_UNICODE_ACUTE_a+"lida";
 	public final String MESSAGE_UNKNOWN_ERROR = "Error desconocido";
 	public final String MESSAGE_APPLICATION_ERROR = "Error en la aplicacion: ";
 	

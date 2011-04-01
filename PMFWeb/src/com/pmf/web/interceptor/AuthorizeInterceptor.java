@@ -20,7 +20,7 @@ public class AuthorizeInterceptor extends AbstractInterceptor  {
 	    HttpSession session =  request.getSession(true);
 
 		if(session.getAttribute(Constants.GLOBAL_USER_SESSION_KEY) == null) {
-			addActionError(invocation, "Debe iniciar sesión para poder accesar.");
+			addActionError(invocation, "Debe iniciar sesi"+Constants.CHAR_UNICODE_ACUTE_o+"n para poder accesar.");
 			return Action.LOGIN;
 		} 
 		return invocation.invoke();

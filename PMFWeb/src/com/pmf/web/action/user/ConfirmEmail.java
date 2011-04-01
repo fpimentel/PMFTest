@@ -3,6 +3,7 @@ package com.pmf.web.action.user;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pmf.commons.Constants;
 import com.pmf.exceptions.AutoException;
 import com.pmf.exceptions.NotExistsException;
 import com.pmf.web.util.UserConfirmationHelper;
@@ -31,7 +32,7 @@ public class ConfirmEmail extends ActionSupport implements ServletRequestAware  
 			}
 			
 		} catch(NotExistsException ex) {
-			addActionError("Confirmación inválida.");
+			addActionError("Confirmaci"+Constants.CHAR_UNICODE_ACUTE_o+"n inv"+Constants.CHAR_UNICODE_ACUTE_a+"lida.");
 			return ERROR;
 		} catch(AutoException ex) {
 			addActionError(ex.getMessage());

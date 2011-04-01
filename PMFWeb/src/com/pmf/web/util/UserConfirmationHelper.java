@@ -43,7 +43,7 @@ public class UserConfirmationHelper {
 					mailConfirmation.setFechaConfirmacion(Constants.COMMON_FULL_DATE_FORMAT.format(new Date()));
 					mailConfirmation.getUser().setStatus(Constants.USER_STATUS_ACTIVE);
 				} else {
-					throw new AutoException("Codigo de confirmación inválido.");
+					throw new AutoException("Codigo de confirmaci"+Constants.CHAR_UNICODE_ACUTE_o+"n inv"+Constants.CHAR_UNICODE_ACUTE_a+"lido.");
 				}
 			} else {
 				throw new AutoException("El correo " + getEmailAddressRequested() + " ya se encuentra confirmado...");
