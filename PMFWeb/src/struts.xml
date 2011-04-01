@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.serve.static" value="true" />
+	<package name="autowebcommons" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+		</result-types>
+		<interceptors>
+			<interceptor name="login" class="com.pmf.web.interceptor.AuthorizeInterceptor"/>
+			<interceptor name="remember" class="com.pmf.web.interceptor.RememberMeInterceptor"/>
+		</interceptors>
+	</package>
+
+	<package name="website" namespace="/" extends="autowebcommons">
+		<action name="Home" class="com.pmf.web.action.Home">
+			<result name="success" type="tiles">/home.tiles</result>
+		</action>
+	</package>
+
+
+	<package name="ajaxCalls" namespace="/ajax" extends="autowebcommons">
+		<action name="saveContactInformation" class="com.pmf.web.action.user.ModifyProfile" method="saveContactInformation">
+		 	<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="success">/ajax/user/commonresult.jsp</result>
+			<result name="error">/ajax/user/commonerror.jsp</result>
+			<result name="login" type="tiles">/login.tiles</result>
+		</action>
+
+		<action name="saveBasicInformation" class="com.pmf.web.action.user.ModifyProfile" method="saveBasicInformation">
+		 	<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="success">/ajax/user/commonresult.jsp</result>
+			<result name="error">/ajax/user/commonerror.jsp</result>
+			<result name="login" type="tiles">/login.tiles</result>
+		</action>
+	</package>
+
+	<package name="user" namespace="/user" extends="autowebcommons">
+		<action name="signup" class="com.pmf.web.action.user.SignUp" method="populateAction">
+			<result name="success" type="tiles">/registroForm.tiles</result>
+		</action>
+		<action name="doSignup" class="com.pmf.web.action.user.SignUp">
+			<result name="error" type="tiles">/registroForm.tiles</result>
+			<result name="success" type="tiles">/registroSuccess.tiles</result>
+		</action>
+		<action name="confirmEmail" class="com.pmf.web.action.user.ConfirmEmail">
+			<result name="error" type="tiles">/confirmEmailError.tiles</result>
+			<result name="success" type="tiles">/confirmEmail.tiles</result>
+		</action>
+		<action name="doLogin" class="com.pmf.web.action.user.Login">
+			<result name="success" type="tiles">/loginSuccess.tiles</result>
+			<result name="error" type="tiles">/login.tiles</result>
+		</action>
+		<action name="login" class="com.pmf.web.action.user.Login"  method="check">
+			<result name="success" type="tiles">/login.tiles</result>
+			<result name="error" type="tiles">/home.tiles</result>
+		</action>
+		<action name="logout" class="com.pmf.web.action.user.Logout">
+		 	<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="success" type="tiles">/home.tiles</result>
+			<result name="login" type="tiles">/login.tiles</result>
+		</action>
+		<action name="profile" class="com.pmf.web.action.user.Profile">
+		 	<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="success" type="tiles">/perfil.tiles</result>
+			<result name="login" type="tiles">/login.tiles</result>
+			<result name="error" type="tiles">/genericError.tiles</result>
+		</action>
+		<action name="ModifyProfile" class="com.pmf.web.action.user.Profile" method="modify">
+		 	<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="success" type="tiles">/perfil.tiles</result>
+			<result name="login" type="tiles">/login.tiles</result>
+			<result name="error" type="tiles">/genericError.tiles</result>
+		</action>
+	</package>
+</struts>

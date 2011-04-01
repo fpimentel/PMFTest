@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions SYSTEM "http://tiles.apache.org/dtds/tiles-config_2_0.dtd" PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN">
+<tiles-definitions>
+	<definition template="/templates/default/Base.jsp" name="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/templates/default/header.jsp" />
+		<put-attribute name="menu" value="/templates/default/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/templates/default/footer.jsp" />
+	</definition>
+	<definition name="/home.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Bienvenido a PMFTest" />
+		<put-attribute name="body" value="/Home.jsp" />
+	</definition>
+	<definition name="/registroForm.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Registro de usuarios" />
+		<put-attribute name="body" value="/user/registro.jsp" />
+	</definition>
+	<definition name="/registroSuccess.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Registro de usuarios" />
+		<put-attribute name="body" value="/user/registroSucccess.jsp" />
+	</definition>
+	<definition name="/genericError.tiles" extends="baseLayout">
+		<put-attribute name="title" value="PMFTest - Error" />
+		<put-attribute name="body" value="/Error.jsp" />
+	</definition>
+	<definition name="/confirmEmail.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Email confirmado..." />
+		<put-attribute name="body" value="/user/confirmEmail.jsp" />
+	</definition>
+	<definition name="/confirmEmailError.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Error de confirmación..." />
+		<put-attribute name="body" value="/user/confirmEmailError.jsp" />
+	</definition>
+	<definition name="/loginSuccess.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Bienvenido..." />
+		<put-attribute name="body" value="/user/loginSuccess.jsp" />
+	</definition>
+	<definition name="/login.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Iniciar sesión" />
+		<put-attribute name="body" value="/user/login.jsp" />
+	</definition>
+	<definition name="/perfil.tiles" extends="baseLayout">
+		<put-attribute name="title" value="PMFTest - Perfil" />
+		<put-attribute name="body" value="/user/perfil.jsp" />
+	</definition>
+	<definition name="/NotLogged.tiles" extends="baseLayout">
+		<put-attribute name="title"
+			value="PMFTest - Error : Debe iniciar session antes de acceder." />
+		<put-attribute name="body" value="/user/NotLogged.jsp" />
+	</definition>
+</tiles-definitions>
