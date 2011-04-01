@@ -44,7 +44,7 @@ public class Login extends ActionSupport implements ServletRequestAware, Servlet
 				session.setMaxInactiveInterval(18000);
 				return SUCCESS;
 			} else {
-				addActionError("Usuario o contrasñena invalidos.");
+				addActionError("Usuario o contras"+Constants.CHAR_UNICODE_TILDE_n+"ena invalidos.");
 				return ERROR;
 			}
 		} catch (Exception ex) {
