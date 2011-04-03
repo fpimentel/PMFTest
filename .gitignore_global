@@ -1,0 +1,12 @@
+ompiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+Thumbs.db
+.metadata/*.*
+glassfish31eclipsedefaultdomain/*.*
+
