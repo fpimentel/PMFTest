@@ -1,0 +1,3 @@
+# @ the console type, to add the gitinigonore file to the config of git
+
+git config --global core.excludesfile ~/.gitignore_global
