@@ -1,0 +1,5 @@
+E:\development\eclipse\plugins\oracle.eclipse.runtime.glassfish_3.1.0.0\glas
+sfish3\bin\asadmin.bat start-database
+
+
+-- E:\development\eclipse <-- is where u have installed or copied your eclipse integration with glassfish.
