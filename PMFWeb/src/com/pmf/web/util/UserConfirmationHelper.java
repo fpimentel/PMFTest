@@ -38,9 +38,9 @@ public class UserConfirmationHelper {
 			BusinessHelperLocal helper = new BusinessHelper();
 			UserMailConfirmation mailConfirmation = helper.getMailConfirmation(getEmailAddressRequested(), getConfirmationCodeRequested());
 			if (mailConfirmation.getUser().getStatus() == Constants.USER_STATUS_UNCONFIRM) {
-				if (mailConfirmation.getConfirmado() == Constants.GLOBAL_STATUS_NOT_ACTIVATED) {
-					mailConfirmation.setConfirmado(Constants.GLOBAL_STATUS_ACTIVATED);
-					mailConfirmation.setFechaConfirmacion(Constants.COMMON_FULL_DATE_FORMAT.format(new Date()));
+				if (mailConfirmation.getConfirmed() == Constants.GLOBAL_STATUS_NOT_ACTIVATED) {
+					mailConfirmation.setConfirmed(Constants.GLOBAL_STATUS_ACTIVATED);
+					mailConfirmation.setConfirmationDate(Constants.COMMON_FULL_DATE_FORMAT.format(new Date()));
 					mailConfirmation.getUser().setStatus(Constants.USER_STATUS_ACTIVE);
 				} else {
 					throw new AutoException("Codigo de confirmaci"+Constants.CHAR_UNICODE_ACUTE_o+"n inv"+Constants.CHAR_UNICODE_ACUTE_a+"lido.");
@@ -63,7 +63,7 @@ public class UserConfirmationHelper {
 				BusinessHelperLocal helper = new BusinessHelper();
 				MailTemplate template = helper.getMailTemplate("mailconfirmation".toUpperCase());
 				String message = template.getTemplate()
-									.replaceAll("@NOMBRES@", getUser().getFirstName() + " " + getUser().getLastName())
+									.replaceAll("@NOMBRES@", getUser().getName())
 									.replaceAll("@URL@", Constants.WEB_URL+"")
 									.replaceAll("@CONFIRMATION_CODE@", getConfirmationCode())
 									.replaceAll("@EMAIL@", getEmailAddress());
@@ -105,10 +105,10 @@ public class UserConfirmationHelper {
 			try {
 				BusinessHelperLocal helper = new BusinessHelper();
 				UserMailConfirmation mailConfirmation = new UserMailConfirmation();
-				mailConfirmation.setConfirmado(Constants.GLOBAL_STATUS_NOT_ACTIVATED);
+				mailConfirmation.setConfirmed(Constants.GLOBAL_STATUS_NOT_ACTIVATED);
 				mailConfirmation.setConfirmationCode(getConfirmationCode());
 				mailConfirmation.seteMail(getEmailAddress());
-				mailConfirmation.setFechaGeneracion(Constants.COMMON_FULL_DATE_FORMAT.format(new Date()));
+				mailConfirmation.setGenerationDate(Constants.COMMON_FULL_DATE_FORMAT.format(new Date()));
 				mailConfirmation.setUser(getUser());
 				//mailConfirmation.setUserId(getUser().getUserId());
 				// persist the mailConfirmation

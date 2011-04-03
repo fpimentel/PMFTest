@@ -7,7 +7,7 @@ import com.pmf.util.EjbConstants;
 
 @Entity
 @Table(name=EjbConstants.TABLE_USER_TYPES)
-@NamedQueries({@NamedQuery(name = "userType.findAll", query = "SELECT d FROM UserType d where d.status='1'"),
+@NamedQueries({@NamedQuery(name = "userType.findAll", query = "SELECT d FROM UserType d where d.status=1"),
 			   @NamedQuery(name = "findByCriteria",   query = "select d from UserType d where d.admin=:admin AND d.status=:status")})
 public class UserType implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -15,10 +15,10 @@ public class UserType implements Serializable{
 	@Id
     @Column(name="user_type")
 	private int type;
-	@Column(name="descripton")
+	@Column(name="description")
 	private String desc;		 	 	 	 	 	 	 
 	@Column(name="admin")
-	private char admin;		 	 	 	 	 	 	 
+	private int admin;		 	 	 	 	 	 	 
 	@Column(name="status")
 	private int status;
 	
@@ -41,10 +41,14 @@ public class UserType implements Serializable{
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	public char getAdmin() {
+	
+	public boolean isAdmin() {
+		return (admin == 1);
+	}
+	public int getAdmin() {
 		return admin;
 	}
-	public void setAdmin(char admin) {
+	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
 	public int getStatus() {

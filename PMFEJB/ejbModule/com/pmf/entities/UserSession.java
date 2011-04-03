@@ -25,13 +25,7 @@ public class UserSession implements Serializable{
 		super();
 	}
 	
-	@Override
-	public String toString() {
-		return "";
-		/*return "UserType:" + getType() + " [desc: " + getDesc() + "\nadmin: "
-				+ getAdmin() + "\nstatus: " + getStatus()+ "]";
-				*/
-	}
+
 	public User getUser() {
 		return user;
 	}

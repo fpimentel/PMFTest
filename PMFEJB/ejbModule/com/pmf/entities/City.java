@@ -9,40 +9,40 @@ import com.pmf.util.EjbConstants;
 @Entity
 @Table(name=EjbConstants.TABLE_CIUDAD)
 @NamedQueries({@NamedQuery(name = "ciudad.findByCountry", query = "SELECT d FROM Ciudad d where d.pais=:pais and d.status=1")})
-public class Ciudad implements Serializable{
+public class City implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @Column(name="ciudadid")
+    @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int ciudadid;
-	@Column(name="ciudad")
-	private String ciudad;		 	 	 	 	 	 	 
+	private int id;
+	@Column(name="city")
+	private String city;		 	 	 	 	 	 	 
 	@Column(name="status")
 	private int status;
 	
 	@ManyToOne 
-    @JoinColumn(name="paisid") 
-    private Pais pais;
+    @JoinColumn(name="countryid") 
+    private Country country;
 	
-	public Ciudad(){
+	public City(){
 		super();
 	}
 
-	public int getCiudadid() {
-		return ciudadid;
+	public int getId() {
+		return id;
 	}
 
-	public void setCiudadid(int ciudadid) {
-		this.ciudadid = ciudadid;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getCiudad() {
-		return ciudad;
+	public String getCity() {
+		return city;
 	}
 
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public int getStatus() {
@@ -53,11 +53,13 @@ public class Ciudad implements Serializable{
 		this.status = status;
 	}
 
-	public Pais getPais() {
-		return pais;
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setPais(Pais pais) {
-		this.pais = pais;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
+
+
 }

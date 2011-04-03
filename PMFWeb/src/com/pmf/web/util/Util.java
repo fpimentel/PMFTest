@@ -21,7 +21,7 @@ import javax.mail.internet.InternetAddress;
 import com.pmf.commons.Constants;
 import com.pmf.ejbs.business.BusinessHelper;
 import com.pmf.ejbs.business.BusinessHelperLocal;
-import com.pmf.entities.Pais;
+import com.pmf.entities.Country;
 import com.pmf.exceptions.NotExistsException;
 import com.pmf.web.util.lists.Ciudad;
 import com.pmf.web.util.lists.LabelValueBean;
@@ -35,14 +35,14 @@ public class Util {
 		public static ArrayList<com.pmf.web.util.lists.Ciudad> getCiudades() throws NotExistsException {
 			if (ciudades == null || ciudades.size() < 1) {
 				BusinessHelperLocal helper = new BusinessHelper();
-				Pais pais = helper.getCountry(Constants.DEFAULT_COUNTRY);
-				List<com.pmf.entities.Ciudad> cities = helper.getCiudades(pais);
+				Country pais = helper.getCountry(Constants.DEFAULT_COUNTRY);
+				List<com.pmf.entities.City> cities = helper.getCiudades(pais);
 				ciudades = new ArrayList<com.pmf.web.util.lists.Ciudad>();
 				if (cities != null) {
-					Iterator<com.pmf.entities.Ciudad> it = cities.iterator();
+					Iterator<com.pmf.entities.City> it = cities.iterator();
 					while(it.hasNext()) {
-						com.pmf.entities.Ciudad city = it.next();
-						ciudades.add(new com.pmf.web.util.lists.Ciudad(city.getCiudadid()+"",city.getCiudad()));
+						com.pmf.entities.City city = it.next();
+						ciudades.add(new com.pmf.web.util.lists.Ciudad(city.getId()+"",city.getCity()));
 					}
 				}
 				else {

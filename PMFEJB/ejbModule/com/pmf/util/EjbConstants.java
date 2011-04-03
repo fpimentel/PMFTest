@@ -7,12 +7,12 @@ public interface EjbConstants {
 	// tables
 	public final String TABLE_USER_TYPES = "USER_TYPES";
 	public final String TABLE_CONTACTS = "CONTACTS";
-	public final String TABLE_USERS = "AUTO_USERS";
+	public final String TABLE_USERS = "USERS";
 	public final String TABLE_USER_CONFIRMATION = "user_confirmations";
 	public final String TABLE_MAIL_TEMPLATES = "mail_templates";
 	public final String TABLE_USER_SESSION = "user_session";
-	public final String TABLE_PAIS = "paises";
-	public final String TABLE_CIUDAD = "ciudades";
+	public final String TABLE_PAIS = "countries";
+	public final String TABLE_CIUDAD = "cities";
 
 	
 	// messages

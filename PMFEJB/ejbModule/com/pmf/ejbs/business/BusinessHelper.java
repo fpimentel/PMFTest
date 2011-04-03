@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
-import com.pmf.entities.Ciudad;
+import com.pmf.entities.City;
 import com.pmf.entities.MailTemplate;
-import com.pmf.entities.Pais;
+import com.pmf.entities.Country;
 import com.pmf.entities.UserMailConfirmation;
 import com.pmf.entities.UserSession;
 import com.pmf.exceptions.AutoException;
@@ -95,52 +95,52 @@ public class BusinessHelper implements BusinessHelperLocal {
     	}
     }
     
-    public List<Pais> getCountries() throws NotExistsException
+    public List<Country> getCountries() throws NotExistsException
     {
 		try {
 			Query query = em.createNamedQuery("Pais.findAll");
-			List<Pais> paisList = query.getResultList();
+			List<Country> paisList = query.getResultList();
 			if (paisList.size() > 0) {
 	    		return paisList;
 			} else {
 				throw new Exception(" no existen ");
 			}
 		} catch (Exception ex) {
-			throw new NotExistsException(Pais.class.getName() + " " + EjbConstants.MESSAGE_NOT_EXISTS);
+			throw new NotExistsException(Country.class.getName() + " " + EjbConstants.MESSAGE_NOT_EXISTS);
 		}
     }
     
-    public Pais getCountry(int paisid) throws NotExistsException
+    public Country getCountry(int paisid) throws NotExistsException
     {
-    	Pais pais = null;
+    	Country pais = null;
 		try {
 			Query query = em.createNamedQuery("Pais.findByCode");
 			query.setParameter("paisid", paisid);
-			List<Pais> paisList = query.getResultList();
+			List<Country> paisList = query.getResultList();
 			if (paisList.size() > 0) {
 	    		pais = paisList.get(0);
 			} else {
 				throw new Exception(" no existen ");
 			}
 		} catch (Exception ex) {
-			throw new NotExistsException(Pais.class.getName() + " " + EjbConstants.MESSAGE_NOT_EXISTS + " " +ex.getMessage());
+			throw new NotExistsException(Country.class.getName() + " " + EjbConstants.MESSAGE_NOT_EXISTS + " " +ex.getMessage());
 		}
 		return pais;
     }
     
-    public List<Ciudad> getCiudades(Pais pais) throws NotExistsException
+    public List<City> getCiudades(Country pais) throws NotExistsException
     {
 		try {
 			Query query = em.createNamedQuery("ciudad.findByCountry");
 			query.setParameter("pais", pais);
-			List<Ciudad> ciudadList = query.getResultList();
+			List<City> ciudadList = query.getResultList();
 			if (ciudadList.size() > 0) {
 				return ciudadList;
 			} else {
 				throw new Exception(" no existen ");
 			}
 		} catch (Exception ex) {
-			throw new NotExistsException(Ciudad.class.getName() + " " + EjbConstants.MESSAGE_NOT_EXISTS);
+			throw new NotExistsException(City.class.getName() + " " + EjbConstants.MESSAGE_NOT_EXISTS);
 		}
     }
 }

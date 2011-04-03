@@ -14,7 +14,7 @@ import com.pmf.util.EjbConstants;
 @NamedQueries( {
 		@NamedQuery(name = "User.findByLoginNPassword", query = "SELECT d FROM User d where d.login = :login and d.password = :password"),
 		@NamedQuery(name = "User.findByLogin", query = "SELECT d FROM User d where d.login = :login"),
-		@NamedQuery(name = "User.findByUserId", query = "SELECT d FROM User d where d.userId = :userId") })
+		@NamedQuery(name = "User.findByUserId", query = "SELECT d FROM User d where d.id = :id") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,9 +23,9 @@ public class User implements Serializable {
 	}
 
 	@Id
-	@Column(name = "userid")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private int id;
 	// @Column(name="user_type")
 
 	@ManyToOne
@@ -35,12 +35,8 @@ public class User implements Serializable {
 	private String login;
 	@Column(name = "salutation")
 	private String salutation;
-	@Column(name = "first_name")
-	private String firstName;
-	@Column(name = "middle_name")
-	private char middleName;
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "name")
+	private String name;
 	@Column(name = "birthdate")
 	private String birthdate;
 	@Column(name = "password")
@@ -51,36 +47,21 @@ public class User implements Serializable {
 	private String lastLogin;
 	@Column(name = "referal")
 	private String referal;
-	@Column(name = "habitual_garage")
-	private String habitualPit;
 	@Column(name = "status")
 	private int status;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "UserContactMap", joinColumns = { @JoinColumn(name = "userid", referencedColumnName = "userid", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "contactid", referencedColumnName = "contactid", nullable = false, updatable = false) })
+	@JoinTable(name = "UserContactMap", joinColumns = { @JoinColumn(name = "id", referencedColumnName = "userid", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "contactid", referencedColumnName = "contactid", nullable = false, updatable = false) })
 	private Contact contact;
 
-	@Override
-	public String toString() {
-		String retorno = "User:" + getUserId() + " \n[type: "
-				+ getUserType().getDesc() + "\nlogin: " + getLogin()
-				+ "\nFirstName: " + getFirstName() + "\nLastName: "
-				+ getLastName() + "\nbirthdate: " + getBirthdate()
-				+ "\nlastlogin: " + getLastLogin() + "\nemail: " + getEmail()
-				+ "\nreferal: " + getReferal() + "\nhabitualpit: "
-				+ getHabitualPit();
 
-		retorno += "\n" + getContact().toString();
 
-		return retorno + "]";
+	public int getId() {
+		return id;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public UserType getUserType() {
@@ -107,28 +88,12 @@ public class User implements Serializable {
 		this.salutation = salutation;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public char getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(char middleName) {
-		this.middleName = middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getBirthdate() {
@@ -169,14 +134,6 @@ public class User implements Serializable {
 
 	public void setReferal(String referal) {
 		this.referal = referal;
-	}
-
-	public String getHabitualPit() {
-		return habitualPit;
-	}
-
-	public void setHabitualPit(String habitualPit) {
-		this.habitualPit = habitualPit;
 	}
 
 	public Contact getContact() {

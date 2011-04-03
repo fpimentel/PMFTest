@@ -31,9 +31,7 @@ public class Profile extends ActionSupport implements ServletRequestAware, Servl
 	private String login;
 	private ArrayList<String> salutationList; 
 	private String salutation;
-	private String firstName;
-	private String middleName;
-	private String lastName;
+	private String name;
 	private Date birthDate;
 	private String password;
 	private String passwordConfirmation;
@@ -80,26 +78,23 @@ public class Profile extends ActionSupport implements ServletRequestAware, Servl
 				Contact contact = user.getContact();
 				setContact(contact);
 				setLogin(login);
-				setUserid(user.getUserId()+"");
+				setUserid(user.getId()+"");
 				setSalutation(user.getSalutation());
-				setFirstName(user.getFirstName());
-				setMiddleName(user.getMiddleName() + "");
-				setLastName(user.getLastName());
+				setName(user.getName());
 				setBirthDate(Constants.BIRTH_DATE_FORMAT.parse(user.getBirthdate()));
 				setEMail(user.getEmail());
 				setReferal(user.getReferal());
-				setHabitualPit(user.getHabitualPit());
 				// contacts
 				if (contact != null) {
-					setPais(contact.getPais());
-					setCiudad(contact.getCiudad());
+					setPais(contact.getCountry());
+					setCiudad(contact.getCity());
 					setSector(contact.getSector());
-					setCalle(contact.getCalle());
-					setNumero(contact.getNumero());
+					setCalle(contact.getStreet());
+					setNumero(contact.getNumber());
 					setApto(contact.getApto());
-					setTelefono(contact.getTelefono());
-					setCelular(contact.getCelular());
-					setCiudadLabel(Util.getCiudad(contact.getCiudad()));
+					setTelefono(contact.getTelephone());
+					setCelular(contact.getCell());
+					setCiudadLabel(Util.getCiudad(contact.getCity()));
 				}
 			}
 		} catch (Exception ex){
@@ -143,24 +138,13 @@ public class Profile extends ActionSupport implements ServletRequestAware, Servl
 	public void setSalutation(String salutation) {
 		this.salutation = salutation;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getMiddleName() {
-		return middleName;
-	}
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+
 	public Date getBirthDate() {
 		return birthDate;
 	}

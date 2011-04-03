@@ -53,8 +53,7 @@ public class UserHelper {
 		UserSession userSession = new UserSession();
 		userSession.setAdmin(Constants.GLOBAL_YES_RESPONSE.equalsIgnoreCase(user.getUserType().getAdmin() + ""));
 		userSession.setEmail(user.getEmail());
-		userSession.setFirstName(user.getFirstName());
-		userSession.setLastName(user.getLastName());
+		userSession.setFirstName(user.getName());
 		userSession.setLogin(user.getLogin());
 		userSession.setSalutation(user.getSalutation());
 		userSession.setSessionId(request.getSession().getId());

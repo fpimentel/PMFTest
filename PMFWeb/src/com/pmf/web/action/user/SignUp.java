@@ -157,13 +157,13 @@ public class SignUp extends ActionSupport implements ServletRequestAware, Servle
 					errors = true;
 				}
 				if(Util.isCalleValid(getCalle())) {
-					contact.setCalle(getCalle());
+					contact.setStreet(getCalle());
 				}  else {
 					addActionError("El campo Calle es incorrecto.");
 					errors = true;
 				}
 				if (Util.isNumeroContacto(getNumero())) {
-					contact.setNumero(getNumero());
+					contact.setNumber(getNumero());
 				} else {
 					addActionError("El campo N\00famero es incorrecto.");
 					errors = true;
@@ -173,19 +173,19 @@ public class SignUp extends ActionSupport implements ServletRequestAware, Servle
 				}
 				
 				if (Util.isTelefonoValid(getTelefono())) {
-					contact.setTelefono(getTelefono());
+					contact.setTelephone(getTelefono());
 					
 				} else {
 					addActionError("El campo Tel\00e9fono es incorrecto.");
 					errors = true;
 				}
 				if (Util.isTelefonoValid(getCelular())) {
-					contact.setCelular(getCelular());
+					contact.setCell(getCelular());
 				} 
 				
 				if (!errors) {
-					contact.setPais("1");
-					contact.setCiudad("1");
+					contact.setCountry("1");
+					contact.setCity("1");
 					contact.setStatus(Constants.GLOBAL_STATUS_ACTIVATED);
 					user.setContact(contact);
 				} else {
@@ -211,10 +211,7 @@ public class SignUp extends ActionSupport implements ServletRequestAware, Servle
 			if (userLogic != null) {
 				user.setBirthdate(Constants.BIRTH_DATE_FORMAT.format(getBirthDate()));
 				user.setEmail(getEMail());
-				user.setFirstName(getFirstName());
-				user.setMiddleName((getMiddleName() != null && getMiddleName().length() > 0 ? getMiddleName().toCharArray()[0] : ' '));
-				user.setLastName(getLastName());
-				user.setHabitualPit(getHabitualPit());
+				user.setName(getFirstName());
 				user.setLogin(getLogin());
 				user.setPassword(new PasswordBusiness(getPassword()).getMD5());
 				user.setReferal(getReferal());

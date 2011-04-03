@@ -12,9 +12,9 @@ public class MailTemplate implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @Column(name="templateid")
+    @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int templateId;
+	private int id;
 	@Column(name="name", length=20)
 	private String name;		 	 	 	 	 	 	 
 	@Column(name="template")
@@ -26,20 +26,22 @@ public class MailTemplate implements Serializable{
 		super();
 	}
 	
+	
+	
 	@Override
 	public String toString() {
-		return "";
-		/*return "UserType:" + getType() + " [desc: " + getDesc() + "\nadmin: "
-				+ getAdmin() + "\nstatus: " + getStatus()+ "]";
-				*/
+		return "MailTemplate [id=" + id + ", name=" + name + ", template="
+				+ template + ", subject=" + subject + "]";
 	}
 
-	public int getTemplateId() {
-		return templateId;
+
+
+	public int getId() {
+		return id;
 	}
 
-	public void setTemplateId(int templateId) {
-		this.templateId = templateId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {

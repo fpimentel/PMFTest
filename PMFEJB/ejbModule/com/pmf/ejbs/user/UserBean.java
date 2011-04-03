@@ -121,15 +121,12 @@ public class UserBean implements UserBeanLocal {
 	        e.setUserType(getUserType(userType));
 	        e.setLogin(login);
 	        e.setSalutation(salutation);
-	        e.setFirstName(firstName);
-	        e.setMiddleName(middleName);
-	        e.setLastName(lastName);
+	        e.setName(firstName);
 	        e.setBirthdate(Constants.BIRTH_DATE_FORMAT.format(birthDate));
 	        e.setPassword(password);
 	        e.setEmail(email);
 	        e.setLastLogin(Constants.COMMON_FULL_DATE_FORMAT.format(new Date()));
 	        e.setReferal(referal);
-	        e.setHabitualPit(habitualPit);
         } catch (NotExistsDepartmentException ex) { 
     		throw ex;
     	}
@@ -143,7 +140,7 @@ public class UserBean implements UserBeanLocal {
 	        em.persist(user);
 	        em.flush();
 	        em.getTransaction().commit();
-	        userId = getUser(user.getLogin()).getUserId();
+	        userId = getUser(user.getLogin()).getId();
     	}  catch (NullPointerException ex) {
     		userId = -1;    		
     	} catch (Exception ex) {
@@ -168,23 +165,12 @@ public class UserBean implements UserBeanLocal {
    	    		user.setSalutation(salutation);
    	    	}
    	    	
-   	    	if (firstName!= null && firstName.length() > 0 && !firstName.equals(user.getFirstName()))  {
-   	    		user.setFirstName(firstName);
+   	    	if (firstName!= null && firstName.length() > 0 && !firstName.equals(user.getName()))  {
+   	    		user.setName(firstName);
    	    	}
-   	    	
-   	    	if (middleName != '-' && middleName != user.getMiddleName()) {
-   	    		user.setMiddleName(middleName);
-   	    	}
-   	    	
-   	    	if (lastName!= null && lastName.length() > 0 && !lastName.equals(user.getLastName())) {
-   	    		user.setLastName(lastName);
-   	    	}
-   	    	
+   	    	  	    	
    	    	if (email!= null && email.length() > 0 && !email.equals(user.getEmail())) {
    	    		user.setEmail(email);
-   	    	}
-   	    	if (habitualPit!= null && habitualPit.length() > 0 && !habitualPit.equals(user.getHabitualPit())) {
-   	    		user.setHabitualPit(habitualPit);
    	    	}
    	    	if (birthdate!= null) {
    	    		user.setBirthdate(Constants.BIRTH_DATE_FORMAT.format(birthdate));
@@ -283,29 +269,29 @@ public class UserBean implements UserBeanLocal {
 			if (userList.size() > 0) {
 	    		user = (User)userList.get(0);
 	    		Contact contact = user.getContact();
-	    		if (!(pais+"").equals(contact.getPais())){
-	 	        	contact.setPais(pais+"");
+	    		if (!(pais+"").equals(contact.getCountry())){
+	 	        	contact.setCountry(pais+"");
 	 	        }
-	 	        if (!(ciudad+"").equals(contact.getCiudad())){
-	 	        	contact.setCiudad(ciudad+"");
+	 	        if (!(ciudad+"").equals(contact.getCity())){
+	 	        	contact.setCity(ciudad+"");
 	 	        }
 	 	        if (sector != null && !sector.equals(contact.getSector())){
 	 	        	contact.setSector(sector);
 	 	        }
-	 	        if (calle != null && !calle.equals(contact.getCalle())){
-	 	        	contact.setCalle(calle);
+	 	        if (calle != null && !calle.equals(contact.getStreet())){
+	 	        	contact.setStreet(calle);
 	 	        }
-	 	        if (numero != null && !numero.equals(contact.getNumero())){
-	 	        	contact.setNumero(numero);
+	 	        if (numero != null && !numero.equals(contact.getNumber())){
+	 	        	contact.setNumber(numero);
 	 	        }
 	 	        if (apto != null && !apto.equals(contact.getApto())){
 	 	        	contact.setApto(apto);
 	 	        }
-	 	        if (telefono != null && !telefono.equals(contact.getTelefono())){
-	 	        	contact.setTelefono(telefono);
+	 	        if (telefono != null && !telefono.equals(contact.getTelephone())){
+	 	        	contact.setTelephone(telefono);
 	 	        }
-	 	        if (celular != null && !celular.equals(contact.getCelular())){
-	 	        	contact.setCelular(celular);
+	 	        if (celular != null && !celular.equals(contact.getCell())){
+	 	        	contact.setCell(celular);
 	 	        }
 			} else {
 				throw new Exception();

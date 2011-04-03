@@ -15,18 +15,16 @@ public class UserMailConfirmation implements Serializable{
     @Column(name="confirmationid")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int confirmationId;
-	/*@Column(name="userId")
-	private int userId;*/		 	 	 	 	 	 	 
 	@Column(name="email")
 	private String eMail;		 	 	 	 	 	 	 
 	@Column(name="confirmation_code")
 	private String confirmationCode;
-	@Column(name="fecha_generacion")
-	private String fechaGeneracion;
-	@Column(name="fecha_confirmacion")
-	private String fechaConfirmacion;
-	@Column(name="confirmado")
-	private int confirmado;
+	@Column(name="generation_date")
+	private String generationDate;
+	@Column(name="confirmation_date")
+	private String confirmationDate;
+	@Column(name="confirmed")
+	private int confirmed;
 	@OneToOne 
     @JoinColumn(name="userid") 
     private User user;
@@ -35,14 +33,6 @@ public class UserMailConfirmation implements Serializable{
 		super();
 	}
 	
-	@Override
-	public String toString() {
-		return "";
-		/*return "UserType:" + getType() + " [desc: " + getDesc() + "\nadmin: "
-				+ getAdmin() + "\nstatus: " + getStatus()+ "]";
-				*/
-	}
-
 	public int getConfirmationId() {
 		return confirmationId;
 	}
@@ -50,15 +40,7 @@ public class UserMailConfirmation implements Serializable{
 	public void setConfirmationId(int confirmationId) {
 		this.confirmationId = confirmationId;
 	}
-/*
-	public int getUserId() {
-		return userId;
-	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-*/
 	public String geteMail() {
 		return eMail;
 	}
@@ -75,30 +57,31 @@ public class UserMailConfirmation implements Serializable{
 		this.confirmationCode = confirmationCode;
 	}
 
-	public String getFechaGeneracion() {
-		return fechaGeneracion;
-	}
-
-	public void setFechaGeneracion(String fechaGeneracion) {
-		this.fechaGeneracion = fechaGeneracion;
-	}
-
-	public String getFechaConfirmacion() {
-		return fechaConfirmacion;
-	}
-
-	public void setFechaConfirmacion(String fechaConfirmacion) {
-		this.fechaConfirmacion = fechaConfirmacion;
-	}
-
-	public int getConfirmado() {
-		return confirmado;
-	}
-
-	public void setConfirmado(int confirmado) {
-		this.confirmado = confirmado;
-	}
 	
+	public String getGenerationDate() {
+		return generationDate;
+	}
+
+	public void setGenerationDate(String generationDate) {
+		this.generationDate = generationDate;
+	}
+
+	public String getConfirmationDate() {
+		return confirmationDate;
+	}
+
+	public void setConfirmationDate(String confirmationDate) {
+		this.confirmationDate = confirmationDate;
+	}
+
+	public int getConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(int confirmed) {
+		this.confirmed = confirmed;
+	}
+
 	public User getUser() {
 		return user;
 	}
