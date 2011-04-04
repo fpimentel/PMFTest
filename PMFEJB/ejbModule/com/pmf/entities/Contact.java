@@ -51,7 +51,7 @@ public class Contact implements Serializable{
     @JoinTable(
             name="UserContactMap",
             joinColumns = {@JoinColumn(name="id",nullable=false)},
-           inverseJoinColumns = {@JoinColumn(name="userid",nullable=false)})
+           inverseJoinColumns = {@JoinColumn(name="id",nullable=false)})
 	private User user;
 
 	public Contact(){

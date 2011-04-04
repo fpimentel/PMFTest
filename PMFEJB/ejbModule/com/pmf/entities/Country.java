@@ -28,7 +28,7 @@ public class Country implements Serializable {
 	private String name;
 	@Column(name = "status")
 	private int status;
-	@OneToMany(mappedBy="countryid")
+	@OneToMany(mappedBy="country")
 	private List<City> cities;
 	
 	

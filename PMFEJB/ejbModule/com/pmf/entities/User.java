@@ -51,7 +51,12 @@ public class User implements Serializable {
 	private int status;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "UserContactMap", joinColumns = { @JoinColumn(name = "id", referencedColumnName = "userid", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "contactid", referencedColumnName = "contactid", nullable = false, updatable = false) })
+	@JoinTable(name = "UserContactMap", joinColumns = { 
+			@JoinColumn(name = "userid", 
+					referencedColumnName = "id", nullable = false) 
+			}, inverseJoinColumns = { 
+			@JoinColumn(name = "contactid", 
+					referencedColumnName = "id", nullable = false, updatable = false) })
 	private Contact contact;
 
 
