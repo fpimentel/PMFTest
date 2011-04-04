@@ -3,7 +3,7 @@ body {
    font-family: Verdana, Arial, Helvetica;
    font-size: 12px;
   /* background: #ededed;*/
-   background-image:url(/autoWEB/templates/default/img/bigbackground.jpg);
+   background-image:url(/PMFWeb/templates/default/img/bigbackground.jpg);
    background-position:top center;
    background-repeat:repeat-y;
 }

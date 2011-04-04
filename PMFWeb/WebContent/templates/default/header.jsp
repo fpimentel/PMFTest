@@ -14,7 +14,7 @@
 		</s:if>
 		<s:if test="#session.USER != null">
 			<a href="<%=request.getContextPath()%>/user/profile.do"><s:property value="#session.USER.getFirstName()" />&nbsp;<s:property value="#session.USER.getLastName()" /></a>
-			(<a href="/autoWEB/user/logout.do" >Salir</a>)
+			(<a href="<%=request.getContextPath()%>/user/logout.do" >Salir</a>)
 		</s:if>
 		</div>
 	</td>

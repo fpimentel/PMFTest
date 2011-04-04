@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 public interface Constants {
 
 	public final String JDBC_MYSQL = "jdbc/MyAutoService";
-	public final String WEB_URL = "http://localhost:8084/autoWEB/";
+	public final String WEB_URL = "http://localhost:8084/PMFWeb/";
 	
 	public final String REQUEST_SUCCESSFUL_PARAMETER_NAME = "SUCCESS_PARAM";
 	
