@@ -49,11 +49,6 @@ function editView(id)
 	*/
 }
 
-function setVehicleHeader(text, value) {
-	//alert("Veh&iacute;culo #" + value + " : " + text.value);
-	$("#veh"+value).get(0).firstChild.data = "Vehículo #" + value + " : " + text.value;
-}
-
 function hideById(id) {
 	//$('#'+id).fadeTo("slow", 0.0);
 	$('#'+id).slideUp("slow");
@@ -67,31 +62,6 @@ function showById(id, display) {
 
 function updateElementId(id, value) {
 	$('#'+id).html(value);
-}
-function refreshCarContentCount() {
-	var count = 0;
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/getCartCount.do",
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-	    	 count=msg;
-		   }
-		 });
-	updateElementId('headerCartContent', count);
-	if($('#CartContentCount') != null)
-		updateElementId('CartContentCount', count);
-}
-
-
-function carContentIncrease() {
-	var count = $('#headerCartContent').html();
-	updateElementId('headerCartContent', ++count);
-}
-function carContentDecrease() {
-	var count = $('#headerCartContent').html();
-	updateElementId('headerCartContent', --count);
 }
 
 /*********************
@@ -160,133 +130,6 @@ function setCurrentMenu(id) {
 	$('#'+id+'Menu').addClass('current');
 }
 
-function getModeloDescripcion(marcaid, modeloid) {
-	var parameters = "marcaid="+marcaid+"&modeloid="+modeloid;
-	var modelo = "";
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/getModeloDescription.do",
-		   data: parameters,
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-		     modelo = msg;
-		   }
-		 });
-	return modelo;
-}
-
-function removePartFromCart(descripcion, marca, chassis, modelo, anio, part) {
-	var valido = false;
-	var parameters = "operation=remove&type=parts&descripcion="+descripcion+"&marca="+marca+"&chassis="+chassis+"&modelo="+modelo+"&anio="+anio+"&cat=0&part="+part+"&quantity=0";
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/cartAction.do",
-		   data: parameters,
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-		     if (msg == 'success') {
-		    	 valido=true;
-		     } else {
-		    	 alert(msg);
-		    	 valido =false;
-		     }
-		   }
-		 });
-	return valido;
-}
-
-function removeServiceFromCart(descripcion, marca, chassis, modelo, anio, date, serviceType,fecha, horario, data) {
-	var valido = false;
-	var parameters = "operation=remove&type=services&serviceType="+serviceType+"&descripcion="+descripcion+"&marca="+marca+"&chassis="+chassis+"&modelo="+modelo+"&anio="+anio+"&horario="+horario+"&fecha="+fecha;
-	var serviceData = data.split("::");
-	var urlPart = "";
-	if (serviceType == 1) { // cambio de aceite...
-		var tipoAceite = serviceData[0];
-		var marcaAceite = serviceData[1];
-		var cantidadAceite = serviceData[2];
-		urlPart = "&oilType="+tipoAceite+"&marcaAceite="+marcaAceite+"&cantidadAceite="+cantidadAceite;
-	} else if (serviceType == 2) {
-		var tintdoOscuridad = serviceData[1];
-		var tipoTintado = serviceData[0];
-		var cristalesATintar = serviceData[2];
-		urlPart = "&tipoTintado="+tipoTintado+"&oscuridad="+tintdoOscuridad+"&vidriosATintar="+cristalesATintar;
-	} else if (serviceType == 3) {
-		var tipoBateria = serviceData[0];
-		var marcaBateria = serviceData[1];
-		var referenciaBateria = serviceData[2];
-		urlPart = "&marcaBateria="+marcaBateria+"&tipoBateria="+tipoBateria+"&referenciaBateria="+referenciaBateria;
-	} else if (serviceType == 5) {
-		urlPart="";
-	} else if (serviceType == 6) {
-		var referenciaGomas = serviceData[0];
-		var marcaGoma = serviceData[1];
-		var gomasQuantity = serviceData[2];
-		urlPart = "&referenciaGomas="+referenciaGomas+"&marcaPredilecta="+marcaGoma+"&quantity="+gomasQuantity;
-	}
-	//alert(parameters+urlPart+"&startServiceTime="+date)
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/cartAction.do" ,
-		   data: parameters+urlPart+"&startServiceTime="+date,
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-		     if (msg == 'success') {
-		    	 valido=true;
-		     } else {
-		    	 alert(msg);
-		    	 valido =false;
-		     }
-		   }
-		 });
-	return valido;
-}
-
-function updatePartInCart(descripcion, marca, chassis, modelo, anio, cat, part, quantity) {
-	var valido = false;
-	var parameters = "operation=update&type=parts&descripcion="+descripcion+"&marca="+marca+"&chassis="+chassis+"&modelo="+modelo+"&anio="+anio+"&cat="+cat+"&part="+part+"&quantity="+quantity;
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/cartAction.do",
-		   data: parameters,
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-		     if (msg == 'success') {
-		    	 valido=true;
-		     } else {
-		    	 alert(msg);
-		    	 valido =false;
-		     }
-		   }
-		 });
-	refreshCarContentCount();
-	return valido;
-}
-
-function addPartToCart(descripcion, marca, chassis, modelo, anio, cat, part, quantity) {
-	var valido = false;
-	var parameters = "operation=add&type=parts&descripcion="+descripcion+"&marca="+marca+"&chassis="+chassis+"&modelo="+modelo+"&anio="+anio+"&cat="+cat+"&part="+part+"&quantity="+quantity;
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/cartAction.do",
-		   data: parameters,
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-		     if (msg == 'success') {
-		    	 valido=true;
-		     } else {
-		    	 alert(msg);
-		    	 valido =false;
-		     }
-		   }
-		 });
-	refreshCarContentCount();
-	return valido;
-}
 function ask(id, question, callback) {
 	$('#'+id+'Msg').html(question);
 	$("#"+id).dialog({
@@ -332,28 +175,4 @@ function onlyNumbers(event) {
 			}
 		} 	
 	}	
-}
-
-function addServiceToCart(serviceType, urlPart, fecha, horario, ciudad, sector, calle, numero, apartamento, edificio, telefono, celular, referencias, descripcion, marca, chassis, modelo, anio) {
-	var valido = false;
-	var parameters = "operation=add&type=services&serviceType="+serviceType+"&fecha="+fecha+"&horario="+horario+"&ciudad="+ciudad+"&sector="+sector;
-	parameters += "&calle="+calle+"&numero="+numero+"&apartamento="+apartamento+"&edificio="+edificio+"&telefono="+telefono+"&celular="+celular+"&referencias="+referencias+"&&descripcion="+descripcion+"&marca="+marca+"&chassis="+chassis+"&modelo="+modelo+"&anio="+anio+urlPart;
-	//alert(parameters);
-	$.ajax({
-		   type: "POST",
-		   url: CONTEXT_PATH+"/ajax/cartAction.do",
-		   data: parameters,
-		   async: false,
-		   cache: false,
-		   success: function(msg){
-		     if (msg == 'success') {
-		    	 valido=true;
-		     } else {
-		    	 alert(msg);
-		    	 valido =false;
-		     }
-		   }
-		 });
-	refreshCarContentCount();
-	return valido;
 }

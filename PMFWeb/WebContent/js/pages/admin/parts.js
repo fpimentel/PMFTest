@@ -1,3 +1,4 @@
+// will keep this file for quick references
 function seeParts(catid) {
 	var url = CONTEXT_PATH+"/adminme/PartsByCat.do?catid="+catid;
 	var wind = opennormalpopup(url, "Piezas", 550, 500);	

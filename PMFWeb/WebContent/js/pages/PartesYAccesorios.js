@@ -1,3 +1,5 @@
+// will keep this file for quick references
+
 $(document).ready(function() {
 	setCurrentMenu("accesorios");
 	/*$('#OwnedCars :input').attr('checked', false);

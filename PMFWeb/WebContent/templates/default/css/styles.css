@@ -3,7 +3,7 @@ body {
    font-family: Verdana, Arial, Helvetica;
    font-size: 12px;
   /* background: #ededed;*/
-   background-image:url(/autoWEB/templates/default/img/bigbackground.jpg);
+   background-image:url(/PMFWeb/templates/default/img/bigbackground.jpg);
    background-position:top center;
    background-repeat:repeat-y;
 }
@@ -245,7 +245,7 @@ a, a img                                { border: 0; text-decoration: none; outl
 	position: relative;
 	padding: 0 0 0 34px;
 	margin: 0 auto 0 auto;
-	background: url(/autoWEB/templates/default/img/menur_bg.gif) repeat-x; /*tab background image path*/
+	background: url(/PMFWeb/templates/default/img/menur_bg.gif) repeat-x; /*tab background image path*/
 	height: 46px;
 	list-style: none;
 }
@@ -277,13 +277,13 @@ a, a img                                { border: 0; text-decoration: none; outl
 
 .glossymenu li.current a, .glossymenu li a:hover{
 	color: #fff;
-	background: url(/autoWEB/templates/default/img/menur_hover_left.gif) no-repeat; /*left tab image path*/
+	background: url(/PMFWeb/templates/default/img/menur_hover_left.gif) no-repeat; /*left tab image path*/
 	background-position: left;
 }
 
 .glossymenu li.current a b, .glossymenu li a:hover b{
 	color: #fff;
-	background: url(/autoWEB/templates/default/img/menur_hover_right.gif) no-repeat right top; /*right tab image path*/
+	background: url(/PMFWeb/templates/default/img/menur_hover_right.gif) no-repeat right top; /*right tab image path*/
 }
 
 /* Sub level menus*/
@@ -340,18 +340,18 @@ text-decoration: underline;
 	float:left;
 	width: 147px;
 	height: 180px;
-	background-image:url(/autoWEB/templates/default/img/box_accesorios.jpg);
+	background-image:url(/PMFWeb/templates/default/img/box_accesorios.jpg);
     background-position: -23px -24px;
     border: solid 0px #B9B9B9;
 }
 
 #accesorios:hover {
 	cursor: pointer; cursor: hand;
-	background-image:url(/autoWEB/templates/default/img/box_accesorios_on.jpg);
+	background-image:url(/PMFWeb/templates/default/img/box_accesorios_on.jpg);
 }
 #cambioVidrio:hover {
 	cursor: pointer; cursor: hand;
-	background-image:url(/autoWEB/templates/default/img/box_cristales_on.jpg);
+	background-image:url(/PMFWeb/templates/default/img/box_cristales_on.jpg);
 }
 #cambioVidrio {
 	margin-left: 10px;
@@ -359,7 +359,7 @@ text-decoration: underline;
 	float:left;
 	width: 148px;
 	height: 180px;
-	background-image:url(/autoWEB/templates/default/img/box_cristales.jpg);
+	background-image:url(/PMFWeb/templates/default/img/box_cristales.jpg);
     background-position: -23px -24px;
     border: solid 0px #B9B9B9;
 }
@@ -375,13 +375,13 @@ text-decoration: underline;
 	display: table-cell;
     vertical-align: middle;
     top: 50%;
-    background-image:url(/autoWEB/templates/default/img/box_batteries.jpg);
+    background-image:url(/PMFWeb/templates/default/img/box_batteries.jpg);
     background-position: -23px -24px;
     border: solid 0px #B9B9B9;
 }
 #cambioBateria:hover {
 	cursor: pointer; cursor: hand;
-    background-image:url(/autoWEB/templates/default/img/box_batteries_on.jpg);
+    background-image:url(/PMFWeb/templates/default/img/box_batteries_on.jpg);
 }
 
 #specials {
@@ -595,7 +595,7 @@ input{
 }
 
 .tooltip-style1 {
-	background:#D56F6F url(/autoWEB/images/support.png) 10px center no-repeat;
+	background:#D56F6F url(/PMFWeb/images/support.png) 10px center no-repeat;
 	color:white;
 	min-height:30px;
 	padding:10px 20px 10px 65px;

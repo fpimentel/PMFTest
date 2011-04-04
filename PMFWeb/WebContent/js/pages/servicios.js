@@ -1,3 +1,5 @@
+// will keep this file for quick references
+
 function hideAllServices() {
 	hideById('notSelectedService');
 	hideById('cambioAceiteDiv');
