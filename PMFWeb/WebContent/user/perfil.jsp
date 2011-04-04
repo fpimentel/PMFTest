@@ -358,7 +358,7 @@
 
 		$('#saveProfileCars_modelo_<s:property value="%{#status.index}" />_').change(function(){
 			if ($(this).val() > 0) { 
-				$('#saveProfileCars_modelo<s:property value="%{#status.index}" />').val($(this).val());
+
 			}
 		})
 
