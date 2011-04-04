@@ -59,6 +59,10 @@
 			<result name="success" type="tiles">/loginSuccess.tiles</result>
 			<result name="error" type="tiles">/login.tiles</result>
 		</action>
+		<action name="ODoLogin" class="com.pmf.web.action.user.Login" method="openIDReturnURL">
+			<result name="success" type="tiles">/loginSuccess.tiles</result>
+			<result name="error" type="tiles">/login.tiles</result>
+		</action>
 		<action name="login" class="com.pmf.web.action.user.Login"  method="check">
 			<result name="success" type="tiles">/login.tiles</result>
 			<result name="error" type="tiles">/home.tiles</result>

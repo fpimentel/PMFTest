@@ -10,7 +10,7 @@
 	<td width="70%" valign="top" height="5px">
 		<div id="headerLinks">
 		<s:if test="#session.USER == null">
-			<a href="<%=request.getContextPath()%>/user/signup.do">Registrate</a> | <a href="/autoWEB/user/login.do">Iniciar Sesi&oacute;n</a>
+			<a href="<%=request.getContextPath()%>/user/signup.do">Registrate</a> | <a href="<%=request.getContextPath()%>/user/login.do">Iniciar Sesi&oacute;n</a>
 		</s:if>
 		<s:if test="#session.USER != null">
 			<a href="<%=request.getContextPath()%>/user/profile.do"><s:property value="#session.USER.getFirstName()" />&nbsp;<s:property value="#session.USER.getLastName()" /></a>
